@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="{'Результат: '  + data.keyword}">
+		xmlns:s="library://ns.adobe.com/flex/spark" title="{'Перевод для: ' + data.keyword}">
+	<s:layout>
+		<s:VerticalLayout gap="10" paddingBottom="5" paddingLeft="5" paddingRight="5" paddingTop="5"/>
+	</s:layout>
+	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
 	<s:navigationContent>
 		<s:Button label="Назад" click="{navigator.popView()}"/>
 	</s:navigationContent>
-	<s:List left="0" right="0" top="0" bottom="0" dataProvider="{data.result}">
-		<s:itemRenderer>
-			<fx:Component>
-				<s:IconItemRenderer
-					labelField="dictname" messageField="value" />
-			</fx:Component>
-		</s:itemRenderer>
-	</s:List>
+	<s:Label width="100%" fontWeight="bold" text="{data.dictname}"/>
+	<s:Scroller width="100%" height="100%">
+			<s:Group width="100%" height="100%">
+				<s:Label width="100%" text="{data.value}"/>
+			</s:Group>
+	</s:Scroller>
+	
 </s:View>

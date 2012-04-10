@@ -23,7 +23,7 @@
 				busyIndicator.visible = false;
 				if( (data as Array).length > 0)
 				{
-					navigator.pushView(ResultView, {result: new ArrayCollection( data as Array), keyword:searchInput.text});
+					navigator.pushView(ResultListView, {result: new ArrayCollection( data as Array), keyword:searchInput.text});
 				}else
 				{
 					searchFailedStatus.text = "Слово отсутствует в словарях."
@@ -41,9 +41,11 @@
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:TextInput id="searchInput" left="10" right="10" top="10" prompt="Введите слово на русском"/>
+	<s:TextInput id="searchInput" left="10" right="10" top="10"
+				 
+				 prompt="Введите слово на русском"/>
 	<s:Button left="10" right="9" top="51" label="Поиск" click="searchClickHandler(event)"
 			  enabled="{searchInput.text.length &gt; 0}"/>
 	<s:BusyIndicator id="busyIndicator" right="13" top="13" visible="false"/>
-	<s:Label id="searchFailedStatus" left="10" right="10" top="106" textAlign="center"/>
+	<s:Label id="searchFailedStatus" left="10" right="10" top="106" textAlign="center" />
 </s:View>

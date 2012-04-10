@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="{'Результатов: '  + data.result.length}" xmlns:views="views.*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import spark.events.IndexChangeEvent;
+			
+			protected function list_changeHandler(event:IndexChangeEvent):void
+			{
+				navigator.pushView(ResultView, resultList.selectedItem);
+			}
+			
+		]]>
+	</fx:Script>
+	<s:navigationContent>
+		<s:Button label="Поиск" click="{navigator.popView()}"/>
+	</s:navigationContent>
+	<s:List left="0"
+			id="resultList"
+			right="0" top="0" bottom="0" dataProvider="{data.result}" change="list_changeHandler(event)">
+		<s:itemRenderer>
+			<fx:Component>
+				<views:TiliIconRenderer
+					labelField="dictname"/>
+			</fx:Component>
+		</s:itemRenderer>
+	</s:List>
+</s:View>
