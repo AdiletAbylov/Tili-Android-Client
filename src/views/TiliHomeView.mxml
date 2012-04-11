@@ -43,7 +43,7 @@
 	</fx:Declarations>
 	<s:TextInput id="searchInput" left="10" right="10" top="10"
 				 
-				 prompt="Введите слово на русском"/>
+				 prompt="Введите слово"/>
 	<s:Button left="10" right="9" top="51" label="Поиск" click="searchClickHandler(event)"
 			  enabled="{searchInput.text.length &gt; 0}"/>
 	<s:BusyIndicator id="busyIndicator" right="13" top="13" visible="false"/>
