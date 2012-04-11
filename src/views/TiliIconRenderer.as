@@ -21,7 +21,7 @@ package views
 		{
 			if((item.value as String).length > 200)
 			{
-				return (item.value as String).substr(0, 200) + " ...";
+				return (item.value as String).substr(0, 200) + "... >>>";
 			}else
 			{
 				return item.value;

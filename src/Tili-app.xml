@@ -25,7 +25,7 @@
 		can also be 1-part or 2-part. It is not necessary to have a 3-part value. 
 		An updated version of application must have a versionNumber value higher 
 		than the previous version. Required for namespace >= 2.5 . -->
-	<versionNumber>0.0.1</versionNumber>
+	<versionNumber>0.0.2</versionNumber>
 
 	<!-- A string value (such as "v1", "2.5", or "Alpha 1") that represents 
 		the version of the application, as it should be shown to users. Optional. -->
@@ -171,15 +171,9 @@
 
 	<!-- The icon to display for the file type. Optional. -->
 	<icon>
-		<image16x16>assets/launchpad_default_icon16.png</image16x16>
-		<image29x29>assets/launchpad_default_icon29.png</image29x29>
-		<image32x32>assets/launchpad_default_icon32.png</image32x32>
-		<image36x36>assets/launchpad_default_icon36.png</image36x36>
-		<image48x48>assets/launchpad_default_icon48.png</image48x48>
-		<image57x57>assets/launchpad_default_icon57.png</image57x57>
-		<image72x72>assets/launchpad_default_icon72.png</image72x72>
-		<image114x114>assets/launchpad_default_icon114.png</image114x114>
-		<image128x128>assets/launchpad_default_icon128.png</image128x128>
+		<image36x36>assets/tili36.png</image36x36>
+		<image48x48>assets/tili48.png</image48x48>
+		<image72x72>assets/tili72.png</image72x72>
 	</icon>
 
 	<!-- </fileType> -->

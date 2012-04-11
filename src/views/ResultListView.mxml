@@ -19,11 +19,13 @@
 		<s:Button label="Поиск" click="{navigator.popView()}"/>
 	</s:navigationContent>
 	<s:List left="0"
+			
 			id="resultList"
 			right="0" top="0" bottom="0" dataProvider="{data.result}" change="list_changeHandler(event)">
 		<s:itemRenderer>
 			<fx:Component>
 				<views:TiliIconRenderer
+					
 					labelField="dictname"/>
 			</fx:Component>
 		</s:itemRenderer>
