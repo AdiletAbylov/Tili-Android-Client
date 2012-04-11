@@ -17,5 +17,4 @@
 				<s:Label width="100%" text="{data.value}"/>
 			</s:Group>
 	</s:Scroller>
-	
 </s:View>
