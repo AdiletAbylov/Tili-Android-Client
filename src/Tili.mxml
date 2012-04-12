@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:ViewNavigatorApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+							splashScreenImage="@Embed('assets/splashScreen.png')"
+							splashScreenScaleMode="letterbox"
+							splashScreenMinimumDisplayTime="2000"
 							xmlns:s="library://ns.adobe.com/flex/spark" firstView="views.TiliHomeView" applicationDPI="160">
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
