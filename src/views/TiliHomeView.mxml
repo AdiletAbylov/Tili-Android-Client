@@ -6,6 +6,8 @@
 		<![CDATA[
 			import business.SearchDelegate;
 			
+			import flash.net.navigateToURL;
+			
 			import mx.collections.ArrayCollection;
 			import mx.rpc.Responder;
 			
@@ -54,6 +56,11 @@
 				}
 			}
 			
+			protected function label1_clickHandler(event:MouseEvent):void
+			{
+				navigateToURL( new URLRequest("http://tili.kg"));
+			}
+			
 		]]>
 	</fx:Script>
 	
@@ -66,10 +73,13 @@
 	<s:Button left="10" right="9" top="102" label="Искать" click="searchClickHandler(event)"
 			  enabled="{searchInput.text.length &gt; 0}"/>
 	<s:BusyIndicator id="busyIndicator" right="13" top="13" visible="false"/>
-	<s:Label id="searchFailedStatus" left="10" right="10" top="153" textAlign="center" />
+	<s:Label id="searchFailedStatus" left="10" right="10" top="153" fontStyle="normal"
+			 textAlign="center" textDecoration="none"/>
 	<s:HGroup left="10" right="10" top="50" height="44" gap="15" verticalAlign="top">
 		<s:Button width="100%" label="Ө" id="oButton" click="additionalButtonsClick(event)"/>
 		<s:Button width="100%" label="Ү" id="yButton" click="additionalButtonsClick(event)"/>
 		<s:Button width="100%" label="Ң" id="nButton" click="additionalButtonsClick(event)"/>
 	</s:HGroup>
+	<s:Label bottom="10" horizontalCenter="0" text="http://tili.kg" textAlign="center"
+			 textDecoration="underline" click="label1_clickHandler(event)"/>
 </s:View>
