@@ -3,7 +3,18 @@
 							splashScreenImage="@Embed('assets/splashScreen.png')"
 							splashScreenScaleMode="letterbox"
 							splashScreenMinimumDisplayTime="2000"
+							keyDown="onKeyDownEvent(event)"
 							xmlns:s="library://ns.adobe.com/flex/spark" firstView="views.TiliHomeView" applicationDPI="160">
+	
+	<fx:Script>
+		<![CDATA[
+			protected function onKeyDownEvent(event:KeyboardEvent):void
+			{
+				NativeApplication.nativeApplication.exit();
+			}
+		]]>
+	</fx:Script>
+	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
