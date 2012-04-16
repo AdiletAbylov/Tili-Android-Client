@@ -14,6 +14,7 @@
 			
 			protected function searchClickHandler(event:MouseEvent):void
 			{
+				searchButton.enabled = false;
 				var delegate:SearchDelegate = new SearchDelegate(new mx.rpc.Responder(onSearchResult, onFault));
 				delegate.search(searchInput.text);
 				busyIndicator.visible = true;
@@ -23,12 +24,15 @@
 			private function onSearchResult(data:Object):void
 			{
 				busyIndicator.visible = false;
+				
 				if( (data as Array).length > 0)
 				{
 					navigator.pushView(ResultListView, {result: new ArrayCollection( data as Array), keyword:searchInput.text});
 				}else
 				{
-					searchFailedStatus.text = "Слово отсутствует в словарях."
+					searchFailedStatus.text = "Слово отсутствует в словарях :(";
+					searchButton.enabled = true;
+					
 				}
 			}
 			
@@ -36,6 +40,8 @@
 			{
 				trace(fault);
 				busyIndicator.visible = false;
+				searchFailedStatus.text = "Произошла ошибка при поиске слова :(";
+				searchButton.enabled = true;
 			}
 			
 			protected function additionalButtonsClick(event:MouseEvent):void
@@ -70,7 +76,9 @@
 	<s:TextInput id="searchInput" left="10" right="10" top="10"
 				 
 				 prompt="Введите слово"/>
-	<s:Button left="10" right="9" top="102" label="Искать" click="searchClickHandler(event)"
+	<s:Button left="10"
+			  id="searchButton"
+			  right="9" top="102" label="Искать" click="searchClickHandler(event)"
 			  enabled="{searchInput.text.length &gt; 0}"/>
 	<s:BusyIndicator id="busyIndicator" right="13" top="13" visible="false"/>
 	<s:Label id="searchFailedStatus" left="10" right="10" top="153" fontStyle="normal"
