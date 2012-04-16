@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="Русско &lt;–&gt; кыргызский словарь">
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		title="Русско &lt;–&gt; кыргызский словарь"
+		keyDown="hardware_keyDownHandler(event)"
+		>
 	
 	<fx:Script>
 		<![CDATA[
@@ -65,6 +68,14 @@
 			protected function label1_clickHandler(event:MouseEvent):void
 			{
 				navigateToURL( new URLRequest("http://tili.kg"));
+			}
+			
+			protected function hardware_keyDownHandler(event:KeyboardEvent):void
+			{
+				if(event.keyCode == Keyboard.BACK)
+				{
+					NativeApplication.nativeApplication.exit();
+				}
 			}
 			
 		]]>
