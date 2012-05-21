@@ -3,6 +3,7 @@
 		xmlns:s="library://ns.adobe.com/flex/spark"
 		title="Русско &lt;–&gt; кыргызский словарь"
 		keyDown="hardware_keyDownHandler(event)"
+		creationComplete="init(event)"
 		>
 	
 	<fx:Script>
@@ -12,6 +13,7 @@
 			import flash.net.navigateToURL;
 			
 			import mx.collections.ArrayCollection;
+			import mx.events.FlexEvent;
 			import mx.rpc.Responder;
 			
 			
@@ -78,23 +80,61 @@
 				}
 			}
 			
+			protected function init(event:FlexEvent):void
+			{
+				if( NetworkInfo.isSupported )
+				{
+					NetworkInfo.networkInfo.addEventListener(Event.NETWORK_CHANGE, onNetworkChange);
+					checkNetworkState();
+				}
+			}
+			
+			protected function onNetworkChange(event:Event):void
+			{
+				checkNetworkState();
+			}
+			
+			private function checkNetworkState():void
+			{
+				var interfaces:Vector.<NetworkInterface> = NetworkInfo.networkInfo.findInterfaces();
+				for(var i:uint = 0; i < interfaces.length; i++) 
+				{
+					if(interfaces[i].name.toLowerCase() == "wifi" && interfaces[i].active) 
+					{
+						currentState = "State1";
+					}
+					else 
+						if(interfaces[i].name.toLowerCase() == "mobile" && interfaces[i].active) 
+						{
+							currentState = "State1";
+						}else
+						{
+							currentState = "NoConnectionState";
+						}
+				}
+			}
 		]]>
 	</fx:Script>
+	<s:states>
+		<s:State name="State1"/>
+		<s:State name="NoConnectionState"/>
+	</s:states>
 	
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<s:TextInput id="searchInput" left="10" right="10" top="10"
-				 
+	<s:TextInput id="searchInput" includeIn="State1" left="10" right="10" top="10"
 				 prompt="Введите слово"/>
-	<s:Button left="10"
-			  id="searchButton"
-			  right="9" top="102" label="Искать" click="searchClickHandler(event)"
-			  enabled="{searchInput.text.length &gt; 0}"/>
+	<s:Button id="searchButton" includeIn="State1" left="10" right="9" top="102" label="Искать"
+			  click="searchClickHandler(event)" enabled="{searchInput.text.length &gt; 0}"/>
 	<s:BusyIndicator id="busyIndicator" right="13" top="13" visible="false"/>
-	<s:Label id="searchFailedStatus" left="10" right="10" top="153" fontStyle="normal"
-			 textAlign="center" textDecoration="none"/>
-	<s:HGroup left="10" right="10" top="50" height="44" gap="15" verticalAlign="top">
+	<s:Label id="searchFailedStatus" fontStyle="normal" textAlign="center" textDecoration="none"
+			 left.NoConnectionState="5" right.NoConnectionState="5" top.NoConnectionState="10"
+			 color.NoConnectionState="#FF0000" textAlign.NoConnectionState="left"
+			 text.NoConnectionState="Для работы приложения требуется соединение по мобильной сети или Wi-Fi."
+			 left.State1="10" right.State1="10" top.State1="153"/>
+	<s:HGroup includeIn="State1" left="10" right="10" top="50" height="44" gap="15"
+			  verticalAlign="top">
 		<s:Button width="100%" label="Ө" id="oButton" click="additionalButtonsClick(event)"/>
 		<s:Button width="100%" label="Ү" id="yButton" click="additionalButtonsClick(event)"/>
 		<s:Button width="100%" label="Ң" id="nButton" click="additionalButtonsClick(event)"/>
