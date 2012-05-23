@@ -132,10 +132,14 @@
 	<s:Button id="searchButton" includeIn="State1" left="10" right="9" top="102" label="Искать"
 			  click="searchClickHandler(event)" enabled="{searchInput.text.length &gt; 0}"/>
 	<s:BusyIndicator id="busyIndicator" right="13" top="13" visible="false"/>
+	<s:BitmapImage source="@Embed('assets/exclamation-circle.png')"
+				   includeIn="NoConnectionState"
+				   left.NoConnectionState="5" top.NoConnectionState="5"
+				   smooth.NoConnectionState="true"/>
 	<s:Label id="searchFailedStatus" fontStyle="normal" textAlign="center" textDecoration="none"
-			 left.NoConnectionState="5" right.NoConnectionState="5" top.NoConnectionState="10"
+			 left.NoConnectionState="61" right.NoConnectionState="5" top.NoConnectionState="10"
 			 color.NoConnectionState="#FF0000" textAlign.NoConnectionState="left"
-			 text.NoConnectionState="Для работы приложения требуется соединение по мобильной сети или Wi-Fi."
+			 text.NoConnectionState="Для работы приложения требуется интернет соединение по мобильной сети или Wi-Fi."
 			 left.State1="10" right.State1="10" top.State1="153"/>
 	<s:HGroup includeIn="State1" left="10" right="10" top="50" height="44" gap="15"
 			  verticalAlign="top">
